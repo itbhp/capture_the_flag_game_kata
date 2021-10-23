@@ -8,7 +8,7 @@ teams and each team can have many players.
 To make the scope of kata narrow, suppose you have just to create a configurator that will be used
 in the backend of the game called by the mobile app (our front end).
 
-There are many things you can configuure: the number of maps a player can see and those can vary if
-the player is already on a team or not, or per team level (team level can go from 1 to 100).
+There are many things you can configure: the number of maps a player can see and those can vary if
+the player is already on a team or not, or per team level (team level can go from 1 to 100), the weapons the player can use.
 
 How can you solve the configuration problem?
