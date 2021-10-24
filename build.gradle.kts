@@ -1,9 +1,15 @@
 plugins {
-    kotlin("jvm") version "1.5.31"
+    val pluginsVersions = object {
+        val kotlin = "1.5.31"
+        val ktLint = "10.2.0"
+        val detekt = "1.18.1"
+        val owasp = "6.4.1.1"
+    }
+    kotlin("jvm") version pluginsVersions.kotlin
     id("idea")
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
-    id("io.gitlab.arturbosch.detekt") version "1.18.1"
-    id("org.owasp.dependencycheck") version "6.4.1.1"
+    id("org.jlleitschuh.gradle.ktlint") version pluginsVersions.ktLint
+    id("io.gitlab.arturbosch.detekt") version pluginsVersions.detekt
+    id("org.owasp.dependencycheck") version pluginsVersions.owasp
 }
 
 repositories {
@@ -43,12 +49,11 @@ subprojects {
     }
 
     dependencies {
-        testImplementation("org.mockito:mockito-core:4.0.0")
-        testImplementation("org.assertj:assertj-core:3.21.0")
-        testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.1")
-        testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1")
-
-        detekt("io.gitlab.arturbosch.detekt:detekt-cli:1.18.1")
+        testImplementation("org.mockito", "mockito-core", depVersion("mockito.version"))
+        testImplementation("org.assertj", "assertj-core", depVersion("assertj.version"))
+        testImplementation("org.junit.jupiter", "junit-jupiter-engine", depVersion("junit.version"))
+        testImplementation("org.junit.jupiter", "junit-jupiter-params", depVersion("junit.version"))
+        detekt("io.gitlab.arturbosch.detekt:detekt-cli:${depVersion("detekt.version")}")
     }
 
     tasks.test {
@@ -56,10 +61,12 @@ subprojects {
     }
 
     ktlint {
-        version.set("0.42.1")
+        version.set(depVersion("ktlint.pinterest.version"))
     }
 
     tasks.check {
         dependsOn("detekt")
     }
 }
+
+fun depVersion(key: String): String = project.properties[key].toString()
