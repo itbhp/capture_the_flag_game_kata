@@ -12,6 +12,7 @@ plugins {
 apply(plugin = "org.springframework.boot")
 apply(plugin = "kotlin-noarg")
 apply(plugin = "kotlin-allopen")
+apply(plugin = "idea")
 
 springBoot {
     mainClass.set("it.twinsbrain.kata.game.configurations.Application")
