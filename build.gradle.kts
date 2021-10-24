@@ -3,6 +3,7 @@ plugins {
     id("idea")
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
     id("io.gitlab.arturbosch.detekt") version "1.18.1"
+    id("org.owasp.dependencycheck") version "6.4.1.1"
 }
 
 repositories {
@@ -25,6 +26,7 @@ subprojects {
         }
     }
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
+    apply(plugin = "org.owasp.dependencycheck")
 
     val detekt by configurations.creating
 
