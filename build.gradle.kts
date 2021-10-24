@@ -28,7 +28,7 @@ subprojects {
     apply(plugin = "java")
     java {
         toolchain {
-            languageVersion.set(JavaLanguageVersion.of(11))
+            languageVersion.set(JavaLanguageVersion.of(16))
         }
     }
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
