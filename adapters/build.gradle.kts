@@ -1,7 +1,7 @@
 plugins {
-  kotlin("jvm")
+    kotlin("jvm")
 }
 
 dependencies {
-  api(project(":domain"))
+    api(project(":domain"))
 }
