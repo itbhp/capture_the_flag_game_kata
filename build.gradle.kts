@@ -67,6 +67,19 @@ subprojects {
     tasks.check {
         dependsOn("detekt")
     }
+
+    tasks {
+        compileKotlin {
+            kotlinOptions {
+                jvmTarget = "11"
+            }
+        }
+        compileTestKotlin {
+            kotlinOptions {
+                jvmTarget = "11"
+            }
+        }
+    }
 }
 
 fun depVersion(key: String): String = project.properties[key].toString()
